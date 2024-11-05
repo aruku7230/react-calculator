@@ -94,6 +94,8 @@ function reducer(state, { type, payload }) {
         operation: null,
         currentOperand: evaluate(state),
       }
+    default:
+      throw Error(`Invalid action: ${type}`)
   }
 }
 
@@ -115,6 +117,8 @@ function evaluate({ currentOperand, previousOperand, operation }) {
     case "÷":
       computation = prev / current
       break
+    default:
+      throw Error(`Invalid operation: ${operation}`)
   }
 
   return computation.toString()
